@@ -21,7 +21,7 @@ export default function Cart() {
 
     setPlacing(true);
     try {
-      const code = await placeOrder(user.id);
+      const code = await placeOrder(user.id.toString());
       setOrderCode(code);
     } catch (error: any) {
       alert('Failed to place order: ' + error.message);
@@ -48,9 +48,9 @@ export default function Cart() {
         <p style={{
           fontSize: '1.5rem',
           fontWeight: '700',
-          color: '#667eea',
+          color: '#f97316',
           padding: '1rem',
-          background: '#f0f4ff',
+          background: '#fef3e2',
           borderRadius: '6px',
           marginBottom: '2rem',
         }}>
@@ -60,7 +60,7 @@ export default function Cart() {
           onClick={() => setOrderCode(null)}
           style={{
             padding: '0.75rem 2rem',
-            background: '#667eea',
+            background: '#f97316',
             color: 'white',
             border: 'none',
             borderRadius: '6px',
@@ -149,7 +149,7 @@ export default function Cart() {
                       +
                     </button>
                   </div>
-                  <span style={{ fontWeight: '700', color: '#667eea', minWidth: '100px', textAlign: 'right' }}>
+                  <span style={{ fontWeight: '700', color: '#f97316', minWidth: '100px', textAlign: 'right' }}>
                     XAF {(item.price * item.quantity).toLocaleString()}
                   </span>
                   <button
@@ -225,7 +225,7 @@ export default function Cart() {
                 fontSize: '1.125rem',
               }}>
                 <span style={{ fontWeight: '700', color: '#333' }}>Total</span>
-                <span style={{ fontWeight: '700', color: '#667eea' }}>XAF {total.toLocaleString()}</span>
+                <span style={{ fontWeight: '700', color: '#f97316' }}>XAF {total.toLocaleString()}</span>
               </div>
             </div>
 
@@ -235,7 +235,7 @@ export default function Cart() {
               style={{
                 width: '100%',
                 padding: '0.875rem',
-                background: placing || !orderType ? '#ccc' : '#667eea',
+                background: placing || !orderType ? '#ccc' : '#f97316',
                 color: 'white',
                 border: 'none',
                 borderRadius: '6px',

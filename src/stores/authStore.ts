@@ -1,13 +1,14 @@
 import { create } from 'zustand';
-import { supabase } from '../lib/supabase';
+import { userAPI } from '../lib/api';
 
 interface User {
-  id: string;
-  email: string;
+  id: number;
+  name: string;
   full_name: string;
+  email: string;
   phone: string | null;
   role: 'CUSTOMER' | 'STAFF' | 'MANAGER' | 'ADMIN';
-  is_available: boolean;
+  is_available?: boolean;
 }
 
 interface AuthState {
@@ -15,7 +16,7 @@ interface AuthState {
   loading: boolean;
   error: string | null;
   signIn: (email: string, password: string) => Promise<void>;
-  signUp: (email: string, password: string, fullName: string) => Promise<void>;
+  signUp: (email: string, password: string, fullName: string, phone?: string) => Promise<void>;
   signOut: () => Promise<void>;
   initialize: () => Promise<void>;
   clearError: () => void;
@@ -30,14 +31,12 @@ export const useAuthStore = create<AuthState>((set) => ({
     try {
       const userId = localStorage.getItem('user_id');
       if (userId) {
-        const { data, error } = await supabase
-          .from('users')
-          .select('*')
-          .eq('id', userId)
-          .maybeSingle();
-
-        if (error) throw error;
-        set({ user: data, loading: false });
+        const response = await userAPI.getProfile(parseInt(userId));
+        if (response.success) {
+          set({ user: response.user, loading: false });
+        } else {
+          set({ loading: false });
+        }
       } else {
         set({ loading: false });
       }
@@ -46,50 +45,38 @@ export const useAuthStore = create<AuthState>((set) => ({
     }
   },
 
-  signIn: async (email: string, _password: string) => {
+  signIn: async (email: string, password: string) => {
     try {
       set({ loading: true, error: null });
 
-      const { data, error } = await supabase
-        .from('users')
-        .select('*')
-        .eq('email', email)
-        .maybeSingle();
+      const response = await userAPI.login(email, password);
 
-      if (error) throw error;
-      if (!data) throw new Error('Invalid email or password');
-
-      localStorage.setItem('user_id', data.id);
-      set({ user: data, loading: false });
+      if (response.success) {
+        localStorage.setItem('user_id', response.user.id.toString());
+        set({ user: response.user, loading: false });
+      } else {
+        throw new Error(response.message || 'Login failed');
+      }
     } catch (error: any) {
-      set({ error: error.message, loading: false });
+      set({ error: error.response?.data?.message || error.message, loading: false });
       throw error;
     }
   },
 
-  signUp: async (email: string, password: string, fullName: string) => {
+  signUp: async (email: string, password: string, fullName: string, phone?: string) => {
     try {
       set({ loading: true, error: null });
 
-      const { data, error } = await supabase
-        .from('users')
-        .insert([
-          {
-            email,
-            password_hash: password,
-            full_name: fullName,
-            role: 'CUSTOMER',
-          },
-        ])
-        .select()
-        .single();
+      const response = await userAPI.register(fullName, email, password, phone);
 
-      if (error) throw error;
-
-      localStorage.setItem('user_id', data.id);
-      set({ user: data, loading: false });
+      if (response.success) {
+        localStorage.setItem('user_id', response.user.id.toString());
+        set({ user: response.user, loading: false });
+      } else {
+        throw new Error(response.message || 'Registration failed');
+      }
     } catch (error: any) {
-      set({ error: error.message, loading: false });
+      set({ error: error.response?.data?.message || error.message, loading: false });
       throw error;
     }
   },

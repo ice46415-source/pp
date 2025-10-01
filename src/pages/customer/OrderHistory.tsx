@@ -100,7 +100,7 @@ export default function OrderHistory() {
                 </div>
               </div>
               <div style={{ borderTop: '1px solid #eee', paddingTop: '1rem', display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
-                <span style={{ fontWeight: '700', fontSize: '1.125rem', color: '#667eea' }}>
+                <span style={{ fontWeight: '700', fontSize: '1.125rem', color: '#f97316' }}>
                   XAF {order.total_amount.toLocaleString()}
                 </span>
                 <button

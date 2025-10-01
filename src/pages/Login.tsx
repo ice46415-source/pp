@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import { useAuthStore } from '../stores/authStore';
+import { theme } from '../theme';
 
 export default function Login() {
   const [isSignUp, setIsSignUp] = useState(false);
@@ -29,7 +30,7 @@ export default function Login() {
       display: 'flex',
       alignItems: 'center',
       justifyContent: 'center',
-      background: 'linear-gradient(135deg, #667eea 0%, #764ba2 100%)',
+      background: theme.colors.gradient,
     }}>
       <div style={{
         background: 'white',
@@ -43,7 +44,7 @@ export default function Login() {
           <h1 style={{
             fontSize: '2rem',
             fontWeight: '700',
-            color: '#667eea',
+            color: theme.colors.primary,
             marginBottom: '0.5rem',
           }}>
             SERVESOFT
@@ -147,7 +148,7 @@ export default function Login() {
             style={{
               width: '100%',
               padding: '0.875rem',
-              background: 'linear-gradient(135deg, #667eea 0%, #764ba2 100%)',
+              background: theme.colors.gradient,
               color: 'white',
               border: 'none',
               borderRadius: '6px',
@@ -169,7 +170,7 @@ export default function Login() {
               style={{
                 background: 'none',
                 border: 'none',
-                color: '#667eea',
+                color: theme.colors.primary,
                 fontSize: '0.9rem',
                 textDecoration: 'underline',
               }}

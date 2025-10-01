@@ -150,14 +150,14 @@ export default function MenuBrowser() {
                     </p>
                   )}
                   <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
-                    <span style={{ fontSize: '1.25rem', fontWeight: '700', color: '#667eea' }}>
+                    <span style={{ fontSize: '1.25rem', fontWeight: '700', color: '#f97316' }}>
                       XAF {item.price.toLocaleString()}
                     </span>
                     <button
                       onClick={() => handleAddToCart(item)}
                       style={{
                         padding: '0.5rem 1rem',
-                        background: '#667eea',
+                        background: '#f97316',
                         color: 'white',
                         border: 'none',
                         borderRadius: '6px',

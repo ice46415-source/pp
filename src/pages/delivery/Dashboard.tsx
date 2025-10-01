@@ -25,7 +25,7 @@ export default function DeliveryDashboard() {
   useEffect(() => {
     if (user) {
       loadAssignments();
-      setIsAvailable(user.is_available);
+      setIsAvailable(user.is_available || false);
     }
   }, [user]);
 
@@ -127,7 +127,7 @@ export default function DeliveryDashboard() {
         boxShadow: '0 2px 4px rgba(0,0,0,0.05)',
       }}>
         <div>
-          <h1 style={{ fontSize: '1.5rem', fontWeight: '700', color: '#667eea' }}>
+          <h1 style={{ fontSize: '1.5rem', fontWeight: '700', color: '#f97316' }}>
             SERVESOFT
           </h1>
           <p style={{ fontSize: '0.85rem', color: '#666' }}>Delivery Dashboard</p>

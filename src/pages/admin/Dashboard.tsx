@@ -21,7 +21,7 @@ export default function AdminDashboard() {
         boxShadow: '0 2px 4px rgba(0,0,0,0.05)',
       }}>
         <div>
-          <h1 style={{ fontSize: '1.5rem', fontWeight: '700', color: '#667eea' }}>
+          <h1 style={{ fontSize: '1.5rem', fontWeight: '700', color: '#f97316' }}>
             SERVESOFT
           </h1>
           <p style={{ fontSize: '0.85rem', color: '#666' }}>Admin Dashboard</p>
@@ -57,10 +57,10 @@ export default function AdminDashboard() {
               style={{
                 width: '100%',
                 padding: '0.875rem 1.5rem',
-                background: activeTab === tab ? '#f0f4ff' : 'transparent',
+                background: activeTab === tab ? '#fef3e2' : 'transparent',
                 border: 'none',
-                borderLeft: activeTab === tab ? '3px solid #667eea' : '3px solid transparent',
-                color: activeTab === tab ? '#667eea' : '#666',
+                borderLeft: activeTab === tab ? '3px solid #f97316' : '3px solid transparent',
+                color: activeTab === tab ? '#f97316' : '#666',
                 textAlign: 'left',
                 fontSize: '0.95rem',
                 fontWeight: activeTab === tab ? '600' : '400',

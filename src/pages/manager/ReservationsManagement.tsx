@@ -84,7 +84,7 @@ export default function ReservationsManagement() {
           onClick={loadReservations}
           style={{
             padding: '0.75rem 1.5rem',
-            background: '#667eea',
+            background: '#f97316',
             color: 'white',
             border: 'none',
             borderRadius: '6px',

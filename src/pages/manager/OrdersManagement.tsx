@@ -95,7 +95,7 @@ export default function OrdersManagement() {
           onClick={loadOrders}
           style={{
             padding: '0.75rem 1.5rem',
-            background: '#667eea',
+            background: '#f97316',
             color: 'white',
             border: 'none',
             borderRadius: '6px',
@@ -193,7 +193,7 @@ export default function OrdersManagement() {
                 justifyContent: 'space-between',
                 alignItems: 'center',
               }}>
-                <span style={{ fontWeight: '700', fontSize: '1.125rem', color: '#667eea' }}>
+                <span style={{ fontWeight: '700', fontSize: '1.125rem', color: '#f97316' }}>
                   XAF {order.total_amount.toLocaleString()}
                 </span>
 

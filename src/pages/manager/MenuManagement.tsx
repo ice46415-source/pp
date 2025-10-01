@@ -107,7 +107,7 @@ export default function MenuManagement() {
           onClick={() => setShowForm(!showForm)}
           style={{
             padding: '0.75rem 1.5rem',
-            background: '#667eea',
+            background: '#f97316',
             color: 'white',
             border: 'none',
             borderRadius: '6px',
@@ -190,7 +190,7 @@ export default function MenuManagement() {
               type="submit"
               style={{
                 padding: '0.75rem 1.5rem',
-                background: '#667eea',
+                background: '#f97316',
                 color: 'white',
                 border: 'none',
                 borderRadius: '6px',
@@ -229,7 +229,7 @@ export default function MenuManagement() {
                 </p>
               )}
               <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
-                <span style={{ fontSize: '1.25rem', fontWeight: '700', color: '#667eea' }}>
+                <span style={{ fontSize: '1.25rem', fontWeight: '700', color: '#f97316' }}>
                   XAF {item.price.toLocaleString()}
                 </span>
                 <button
